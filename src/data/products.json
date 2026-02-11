@@ -1,0 +1,22 @@
+{
+  "produits": [
+    {
+      "id": 2,
+      "title": "PC Portable Gamer",
+      "price": "2190 DH",
+      "thumbnail": "HP14424U3EA.jpg"
+    },
+    {
+      "id": 3,
+      "title": "Pc Portable Chromebook Acer",
+      "price": "3640 DH",
+      "thumbnail": "IXATHEF002.jpg"
+    },
+    {
+      "id": 4,
+      "title": "PC Portable - HUAWEI",
+      "price": "1270 DH",
+      "thumbnail": "HUAG90144344Z959.jpg"
+    }
+  ]
+}

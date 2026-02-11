@@ -1,0 +1,126 @@
+.ajout-livre-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+h2 {
+  color: #555;
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+.form-section {
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+select {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+select:focus {
+  outline: none;
+  border-color: #4CAF50;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+}
+
+.input-error {
+  border-color: #f44336 !important;
+  background-color: #ffebee;
+}
+
+.error-message {
+  color: #f44336;
+  font-size: 12px;
+  margin-top: 3px;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+button {
+  flex: 1;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-ajouter {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.btn-ajouter:hover {
+  background-color: #45a049;
+}
+
+.btn-reset {
+  background-color: #999;
+  color: white;
+}
+
+.btn-reset:hover {
+  background-color: #777;
+}
+
+.livres-list {
+  margin-top: 30px;
+}
+
+.livres-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.livres-list li {
+  background: #f0f0f0;
+  padding: 12px;
+  margin-bottom: 8px;
+  border-left: 4px solid #4CAF50;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #333;
+}
+
+.livres-list li:hover {
+  background: #e8e8e8;
+}

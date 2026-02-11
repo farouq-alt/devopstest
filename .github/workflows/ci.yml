@@ -1,42 +1,77 @@
+# GitHub Actions CI Pipeline
+# This file runs automatically every time code is pushed to the main branch
+# It tests, builds, and containerizes the app - stopping if anything fails
+
 name: CI Pipeline
 
+# Trigger this workflow on push or pull request to main branch
 on:
   push:
-    branches: [ main ]
+    branches: [ main ]  # Run when code is pushed to main
   pull_request:
-    branches: [ main ]
+    branches: [ main ]  # Run when a PR is created against main
 
+# Define the jobs that will run
 jobs:
+  # Main build job - runs on GitHub's Ubuntu server
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  # Use latest Ubuntu environment
 
+    # Steps are executed in order - if any step fails, the pipeline stops
     steps:
-    - uses: actions/checkout@v3
     
+    # Step 1: Checkout the code from GitHub
+    - uses: actions/checkout@v3
+      # This downloads your code so the pipeline can work with it
+    
+    # Step 2: Install Node.js (required to run npm commands)
     - name: Setup Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '18'
+        node-version: '18'  # Use Node.js version 18
+      # This prepares the environment to run JavaScript/React code
     
+    # Step 3: Install all project dependencies
     - name: Install dependencies
       run: npm install
+      # Downloads all packages listed in package.json (React, Vite, ESLint, etc.)
+      # If this fails, the pipeline stops here
     
+    # Step 4: Check code quality with linter
     - name: Run linter
       run: npm run lint --if-present || echo "No linter configured"
+      # ESLint checks for code style issues and bugs
+      # --if-present means "only run if lint script exists"
+      # || echo means "if it fails, just print a message instead of stopping"
     
+    # Step 5: Build the React app for production
     - name: Build project
       run: npm run build
+      # Vite compiles React code into optimized HTML/CSS/JS files
+      # Output goes to dist/ folder
+      # If build fails, pipeline stops (broken code won't be deployed)
     
+    # Step 6: Run automated tests (if they exist)
     - name: Run tests
       run: npm run test --if-present || echo "No tests configured"
+      # Runs unit tests to verify code works correctly
+      # If tests fail, pipeline stops (broken features won't be deployed)
     
+    # Step 7: Build Docker container image
     - name: Build Docker image
       run: docker build -t devops-demo:latest .
+      # Creates a Docker image with the built app inside
+      # This image can run anywhere (dev, staging, production)
+      # If Docker build fails, pipeline stops
     
+    # Step 8: Show success message if all steps passed
     - name: Success notification
-      if: success()
+      if: success()  # Only runs if all previous steps succeeded
       run: echo "✅ Pipeline passed! Ready for deployment."
+      # This is your signal that code is safe to deploy
     
+    # Step 9: Show failure message if any step failed
     - name: Failure notification
-      if: failure()
+      if: failure()  # Only runs if any previous step failed
       run: echo "❌ Pipeline failed! Fix errors before deploying."
+      # This prevents broken code from going to production

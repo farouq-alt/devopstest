@@ -1,34 +1,27 @@
 {
-  // Project metadata
   "name": "v",
-  "private": true,  // This package won't be published to npm
+  "private": true,
   "version": "0.0.0",
-  "type": "module",  // Use ES6 modules (import/export syntax)
-  
-  // npm scripts - commands you run with "npm run <script-name>"
+  "type": "module",
   "scripts": {
-    "dev": "vite",  // Start development server with hot reload
-    "build": "vite build",  // Build for production (creates dist/ folder)
-    "lint": "eslint .",  // Check code quality with ESLint
-    "preview": "vite preview"  // Preview the production build locally
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
   },
-  
-  // Production dependencies - packages needed to run the app
   "dependencies": {
-    "react": "^19.2.0",  // React library for building UI
-    "react-dom": "^19.2.0"  // React DOM for rendering to HTML
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
   },
-  
-  // Development dependencies - packages only needed during development
   "devDependencies": {
-    "@eslint/js": "^9.39.1",  // ESLint core (code quality checker)
-    "@types/react": "^19.2.5",  // TypeScript types for React
-    "@types/react-dom": "^19.2.3",  // TypeScript types for React DOM
-    "@vitejs/plugin-react": "^5.1.1",  // Vite plugin for React support
-    "eslint": "^9.39.1",  // ESLint (finds code problems)
-    "eslint-plugin-react-hooks": "^7.0.1",  // ESLint rules for React hooks
-    "eslint-plugin-react-refresh": "^0.4.24",  // ESLint rules for React refresh
-    "globals": "^16.5.0",  // Global variables for ESLint
-    "vite": "^7.2.4"  // Vite build tool (fast bundler for React)
+    "@eslint/js": "^9.39.1",
+    "@types/react": "^19.2.5",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^5.1.1",
+    "eslint": "^9.39.1",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.4.24",
+    "globals": "^16.5.0",
+    "vite": "^7.2.4"
   }
 }

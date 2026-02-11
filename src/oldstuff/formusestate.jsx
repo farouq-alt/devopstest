@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 export default function Form() {
-  // --- Champs du formulaire ---
   const [name, setName] = useState("");
   const [pwd, setPwd] = useState("");
   const [email, setEmail] = useState("");
@@ -15,7 +14,6 @@ export default function Form() {
   const [url, setUrl] = useState("");
   const [comment, setComment] = useState("");
 
-  // --- Messages d'erreur ---
   const [nameerr, setnameerr] = useState("");
   const [pwderr, setpwderr] = useState("");
   const [emailerr, setemailerr] = useState("");
@@ -37,7 +35,12 @@ export default function Form() {
       invalid = true;
     } else setnameerr("");
 
-    if (!pwd || !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#\/\-_*\µ!$%^&+=]).{8,}$/.test(pwd)) {
+    if (
+      !pwd ||
+      !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#\/\-_*\µ!$%^&+=]).{8,}$/.test(
+        pwd,
+      )
+    ) {
       setpwderr("invalid pwd");
       invalid = true;
     } else setpwderr("");
@@ -62,7 +65,10 @@ export default function Form() {
       invalid = true;
     } else setageerr("");
 
-    if (!url || !/^(https?:\/\/)?(www\.)?[a-zA-Z0-9-]{2,}\.[a-zA-Z]{1,}$/.test(url)) {
+    if (
+      !url ||
+      !/^(https?:\/\/)?(www\.)?[a-zA-Z0-9-]{2,}\.[a-zA-Z]{1,}$/.test(url)
+    ) {
       seturlerr("invalid url");
       invalid = true;
     } else seturlerr("");
@@ -80,21 +86,18 @@ export default function Form() {
     if (!file) {
       setfileerr("invalid file");
       invalid = true;
-      
     } else {
-      // filename.jpg=>[filename,jpg]
-      let exp = file.name.split('.')   
-      let part = exp[exp.length-1].toLowercase()
-      validate=["png","jpg"]
-      if (part.includes(validate)){
-        invalid=false
-        setfileerr("")
-      }else{
-        invalid=true
-        setfileerr("invalid file")
+      let exp = file.name.split(".");
+      let part = exp[exp.length - 1].toLowercase();
+      validate = ["png", "jpg"];
+      if (part.includes(validate)) {
+        invalid = false;
+        setfileerr("");
+      } else {
+        invalid = true;
+        setfileerr("invalid file");
       }
-
-    };
+    }
 
     if (!gender) {
       setgendererr("invalid gender");
@@ -113,7 +116,7 @@ export default function Form() {
 
   const handleFormationChange = (value) => {
     setFormation((prev) =>
-      prev.includes(value) ? prev.filter((f) => f !== value) : [...prev, value]
+      prev.includes(value) ? prev.filter((f) => f !== value) : [...prev, value],
     );
   };
 
